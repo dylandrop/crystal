@@ -507,7 +507,11 @@ module Crystal
           if @token.type == :INTERPOLATION_START
             next_token_skip_space_or_newline
             write "\#{"
-            write @token.type
+            if %i(__LINE__ __END_LINE__ __FILE__ __DIR__).includes?(@token.type)
+              write @token.type
+            else
+              write @token.value
+            end
             next_token_skip_space_or_newline
             check :"}"
             write "}"

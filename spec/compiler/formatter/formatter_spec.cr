@@ -329,6 +329,7 @@ describe Crystal::Formatter do
 
   assert_format %("foo \#{ 1  +  2 }"), %("foo \#{1 + 2}")
   assert_format %("foo \#{ 1 } \#{ __DIR__ }"), %("foo \#{1} \#{__DIR__}")
+  assert_format %("<<-HEREDOC\n  \#{foo}\n  H\#{hey}\n  HEREDOC"), %("<<-HEREDOC\n  \#{foo}\n  H\#{hey}\n  HEREDOC")
   assert_format %("foo \#{ __DIR__ }"), %("foo \#{__DIR__}")
   assert_format "__FILE__", "__FILE__"
   assert_format "__DIR__", "__DIR__"
